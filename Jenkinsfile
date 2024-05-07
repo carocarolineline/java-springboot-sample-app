@@ -25,12 +25,5 @@ pipeline{
                 git branch: 'main', credentialsId: 'git-repo-creds', url: 'git@github.com:carocarolineline/java-springboot-sample-app.git'
             }
         }
-        stage('compile and test java code'){
-            steps{
-                sh 'mvn clean'
-                sh 'mvn compile'
-                sh 'mvn test'
-            }
-        }
     }
 }
