@@ -8,9 +8,16 @@ pipeline{
         }
         stage('installing java and maven'){
             steps {
-		sh 'sudo apt-get update -y && sudo apt-get upgrade -y'
-		sh 'sudo apt install -y wget tree unzip openjdk-11-jdk maven'
-		sh 'mvn -version'
+                script {
+                    def maven_exists = fileExists '/usr/share/maven'
+                    if (maven_exists == true) {
+                        echo "Skipping Maven install - already installed"
+                    } else {
+                        sh 'sudo apt-get update -y && sudo apt-get upgrade -y'
+                        sh 'sudo apt install -y wget tree unzip openjdk-11-jdk maven'
+                        sh 'mvn -version'
+                    }
+                }
             }
         }
         stage('Third Stage'){
