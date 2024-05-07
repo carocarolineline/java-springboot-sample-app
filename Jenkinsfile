@@ -20,7 +20,7 @@ pipeline{
                 }
             }
         }
-        stage('Third Stage'){
+        stage('clone git repo'){
             steps {
                 git branch: 'main', credentialsId: 'git-repo-creds', url: 'git@github.com:carocarolineline/java-springboot-sample-app.git'
             }
