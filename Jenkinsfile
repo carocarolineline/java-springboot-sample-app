@@ -22,7 +22,7 @@ pipeline{
         }
         stage('Third Stage'){
             steps {
-                echo "Third Stage nvjdaibnirael"
+                git branch: 'main', credentialsId: 'git-repo-creds', url: 'git@github.com:carocarolineline/java-springboot-sample-app.git'
             }
         }
     }
